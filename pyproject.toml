@@ -1,0 +1,4 @@
+[heron-blog-engine]
+homepage = "example.com"
+repo = "https://github.com/KrzysztofCzapla/heron-blog-engine"
+blog_page_template="templates/blog.html"
