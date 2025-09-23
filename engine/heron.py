@@ -1,6 +1,9 @@
 """
-1) header and footbar
-4) Formatting etc
+TODO:
+- make the readme readable
+- add some required formatting
+- allow for bigger customization
+- maybe make a package
 """
 
 import argparse
