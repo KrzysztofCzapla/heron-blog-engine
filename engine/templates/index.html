@@ -1,0 +1,17 @@
+{% include 'common/header.html' %}
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1>KURWA</h1>
+            <ul>
+            {% for post in test_sub %}
+              <li>
+                  {{ post.html }}
+                  <a href="{{ post.file_path }}">Link</a>
+                <p>{{ post.metadata.title }}</p> – {{ post.metadata.date }}
+              </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </section>

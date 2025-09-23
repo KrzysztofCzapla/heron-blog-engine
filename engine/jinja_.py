@@ -1,8 +1,9 @@
-import os.path
+from collections import defaultdict
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
 
-from jinja2 import Template
+from jinja2 import Template, Environment, FileSystemLoader
 
 from config import HeronConfigLoader, HeronConfigFields
 from markdown_ import HTMLWithContext
@@ -14,18 +15,32 @@ class JinjaManager:
     html_with_context_list: List[HTMLWithContext]
 
     @staticmethod
-    def get_html_template():
-        with open(HeronConfigLoader.get_config(HeronConfigFields.blog_page_template)) as f:
-            return Template(f.read())
+    def get_html_template(template: str = HeronConfigFields.blog_page_template):
+        template_name = HeronConfigLoader.get_config(template)
+        templates_dir = Path(template_name).parent
+        env = Environment(loader=FileSystemLoader(str(templates_dir)))
+        return env.get_template(Path(template_name).name)
+
+    def generate_file(self, file_content: str, filename: str):
+        out_file = Path(self.output_path) / filename
+        out_file.parent.mkdir(parents=True, exist_ok=True)
+        out_file.write_text(file_content, encoding="utf-8")
 
     def render(self):
         template = JinjaManager.get_html_template()
 
-        if not os.path.exists(self.output_path):
-            os.makedirs(self.output_path)
-
         for html_obj in self.html_with_context_list:
             file_content = template.render(content=html_obj.html)
+            self.generate_file(file_content, html_obj.file_path)
 
-            with open(self.output_path + "/" + html_obj.filename, "w", encoding="utf-8") as f:
-                f.write(file_content)
+        self.render_main_page()
+
+    def render_main_page(self):
+        template = JinjaManager.get_html_template(HeronConfigFields.main_page_template)
+
+        category_to_pages = defaultdict(list)
+        for page in self.html_with_context_list:
+            category_to_pages[page.category].append(page)
+
+        file_content = template.render(**category_to_pages)
+        self.generate_file(file_content, "index.html")

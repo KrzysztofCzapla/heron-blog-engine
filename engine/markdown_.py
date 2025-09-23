@@ -6,30 +6,50 @@ from markdown import Markdown
 
 MD: Markdown = Markdown(extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"])
 
+
+@dataclass
+class PageMetadata:
+    title: str = "tile"
+    description: str = "description"
+    date: str = "date"
+    author: str = "author"
+    language: str = "language"
+
+
 @dataclass
 class HTMLWithContext:
     html: str
-    filename: str
+    file_path: str # full relative path from input folder, used to inject to output folder; contains .html
+    category: str # i.e. "blog"; can be used from main page's jinja to have different categories of subpages, i.e.: {{ blog.article1 }}
+    metadata: dict
 
 
 @dataclass
 class MarkdownManager:
     input_path: str
 
-    def get_html_with_context(self) -> List[HTMLWithContext]:
-        return [HTMLWithContext(MarkdownManager.render_md_to_html(filename), self.get_new_filename(filename)) for filename in self.gather_md_files()]
+    def get_html_with_context_list(self) -> List[HTMLWithContext]:
+        return [
+            self.get_single_html_with_context(filename) for filename in self.gather_md_files()
+        ]
+
+    def get_single_html_with_context(self, filename: Path) -> HTMLWithContext:
+        html = MD.reset().convert(open(filename).read())
+        metadata = {k: "\n".join(v) for k, v in MD.Meta.items()}
+        file_path = filename.relative_to(self.input_path).with_suffix(".html")
+        category = file_path.parts[0] if len(file_path.parts) > 1 else "unspecified"
+
+        return HTMLWithContext(
+            html=html,
+            file_path=str(file_path),
+            category=category,
+            metadata=metadata,
+        )
 
     def get_new_filename(self, filename: Path) -> str:
-        return filename.with_suffix(".html").name
-
-    @staticmethod
-    def render_md_to_html(filename: Path):
-        return MD.reset().convert(open(filename).read())
+        rel = filename.relative_to(self.input_path)
+        return str(rel.with_suffix(".html"))
 
     def gather_md_files(self):
         path = Path(self.input_path)
         return list(path.rglob("*.md"))
-
-    @staticmethod
-    def validate_md_file(md_file: Path):
-        return md_file

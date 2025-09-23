@@ -12,6 +12,7 @@ class HeronConfigFields:
     homepage: str = "homepage"
     repo: str = "repo"
     blog_page_template: str = "blog_page_template"
+    main_page_template: str = "main_page_template"
 
 
 @dataclass

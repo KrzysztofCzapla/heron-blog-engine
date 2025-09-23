@@ -1,4 +1,5 @@
 [heron-blog-engine]
 homepage = "example.com"
 repo = "https://github.com/KrzysztofCzapla/heron-blog-engine"
-blog_page_template="templates/blog.html"
+blog_page_template="templates/detail.html"
+main_page_template="templates/index.html"
