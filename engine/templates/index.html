@@ -1,17 +1,19 @@
 {% include 'common/header.html' %}
 
 <body>
-    <section class="section">
-        <div class="container">
-            <h1>KURWA</h1>
-            <ul>
-            {% for post in test_sub %}
-              <li>
-                  {{ post.html }}
-                  <a href="{{ post.file_path }}">Link</a>
-                <p>{{ post.metadata.title }}</p> – {{ post.metadata.date }}
-              </li>
-            {% endfor %}
-            </ul>
-        </div>
-    </section>
+    {% include 'common/navbar.html' %}
+    <div>
+        <p>This is my super minimalistic personal page. It's still work in progress. I plan to mostly blog and share interesting stuff.</p>
+    </div>
+    <h1>Blog Posts</h1>
+    {% for article in blog %}
+      <article class="bm-10">
+          <p class="no-margin"> {{ article.metadata.date }} </p>
+          <h2 class="no-margin"> <a href="{{ article.url }}"> {{ article.metadata.title }} </a> </h2>
+          <p class="min-margin"> {{ article.metadata.description }} </p>
+      </article>
+    {% endfor %}
+
+</body>
+
+{% include 'common/foot.html' %}

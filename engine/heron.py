@@ -1,13 +1,5 @@
 '''
-1) CSS and footbar and main page customization
-2) Research if links work well
-3)
-
-
-
-1) custmozabile main page
-2) Add metadata to articles and provide it to the main page with links and sub categories
-3) Add CSS and footbar etc
+1) header and footbar
 4) Formatting etc
 '''
 import argparse

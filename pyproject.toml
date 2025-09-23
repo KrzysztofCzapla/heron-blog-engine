@@ -1,5 +1,9 @@
 [heron-blog-engine]
+main_title = "Krzysztof Czapla"
 homepage = "example.com"
 repo = "https://github.com/KrzysztofCzapla/heron-blog-engine"
+linkedin="https://www.linkedin.com/in/krzysztof-czapla/"
+github="https://github.com/KrzysztofCzapla"
+twitter="https://x.com/_czapla"
 blog_page_template="templates/detail.html"
 main_page_template="templates/index.html"

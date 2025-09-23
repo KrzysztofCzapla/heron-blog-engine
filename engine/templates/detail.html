@@ -1,2 +1,11 @@
-<h1>Lolll</h1>
-{{ content }}
+{% include 'common/header.html' %}
+
+<body>
+    {% include 'common/navbar.html' %}
+    <div>
+        {{ content }}
+    </div>
+
+</body>
+
+{% include 'common/foot.html' %}

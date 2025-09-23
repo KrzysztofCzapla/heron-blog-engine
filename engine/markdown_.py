@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 from markdown import Markdown
 
@@ -12,8 +12,6 @@ class PageMetadata:
     title: str = "tile"
     description: str = "description"
     date: str = "date"
-    author: str = "author"
-    language: str = "language"
 
 
 @dataclass
@@ -22,7 +20,10 @@ class HTMLWithContext:
     file_path: str # full relative path from input folder, used to inject to output folder; contains .html
     category: str # i.e. "blog"; can be used from main page's jinja to have different categories of subpages, i.e.: {{ blog.article1 }}
     metadata: dict
+    url: Optional[str] = None
 
+    def __post_init__(self):
+        self.url = self.file_path
 
 @dataclass
 class MarkdownManager:
