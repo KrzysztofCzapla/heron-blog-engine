@@ -3,9 +3,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 
-from jinja2 import Template, Environment, FileSystemLoader
-
-from config import HeronConfigLoader, HeronConfigFields
+from config import HeronConfigFields, HeronConfigLoader
+from jinja2 import Environment, FileSystemLoader, Template
 from markdown_ import HTMLWithContext
 
 
@@ -30,7 +29,9 @@ class JinjaManager:
         template = JinjaManager.get_html_template()
 
         for html_obj in self.html_with_context_list:
-            file_content = template.render(content=html_obj.html, **HeronConfigLoader.get_config())
+            file_content = template.render(
+                content=html_obj.html, **HeronConfigLoader.get_config()
+            )
             self.generate_file(file_content, html_obj.file_path)
 
         self.render_main_page()
@@ -42,5 +43,7 @@ class JinjaManager:
         for page in self.html_with_context_list:
             category_to_pages[page.category].append(page)
 
-        file_content = template.render(**category_to_pages, **HeronConfigLoader.get_config())
+        file_content = template.render(
+            **category_to_pages, **HeronConfigLoader.get_config()
+        )
         self.generate_file(file_content, "index.html")

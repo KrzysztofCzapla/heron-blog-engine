@@ -1,7 +1,8 @@
-'''
+"""
 1) header and footbar
 4) Formatting etc
-'''
+"""
+
 import argparse
 
 from jinja_ import JinjaManager
@@ -11,8 +12,8 @@ from static import StaticManager
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input-dir', required=True)
-    parser.add_argument('--output-dir', required=True)
+    parser.add_argument("--input-dir", required=True)
+    parser.add_argument("--output-dir", required=True)
     args = parser.parse_args()
     input_path, output_path = args.input_dir, args.output_dir
 
@@ -21,5 +22,5 @@ def main():
     StaticManager(input_path, output_path).copy_static()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

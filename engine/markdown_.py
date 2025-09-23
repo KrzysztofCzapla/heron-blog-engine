@@ -4,7 +4,9 @@ from typing import List, Optional
 
 from markdown import Markdown
 
-MD: Markdown = Markdown(extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"])
+MD: Markdown = Markdown(
+    extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"]
+)
 
 
 @dataclass
@@ -17,13 +19,14 @@ class PageMetadata:
 @dataclass
 class HTMLWithContext:
     html: str
-    file_path: str # full relative path from input folder, used to inject to output folder; contains .html
-    category: str # i.e. "blog"; can be used from main page's jinja to have different categories of subpages, i.e.: {{ blog.article1 }}
+    file_path: str  # full relative path from input folder, used to inject to output folder; contains .html
+    category: str  # i.e. "blog"; can be used from main page's jinja to have different categories of subpages, i.e.: {{ blog.article1 }}
     metadata: dict
     url: Optional[str] = None
 
     def __post_init__(self):
         self.url = self.file_path
+
 
 @dataclass
 class MarkdownManager:
@@ -31,7 +34,8 @@ class MarkdownManager:
 
     def get_html_with_context_list(self) -> List[HTMLWithContext]:
         return [
-            self.get_single_html_with_context(filename) for filename in self.gather_md_files()
+            self.get_single_html_with_context(filename)
+            for filename in self.gather_md_files()
         ]
 
     def get_single_html_with_context(self, filename: Path) -> HTMLWithContext:
