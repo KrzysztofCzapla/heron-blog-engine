@@ -16,7 +16,7 @@ class JinjaManager:
     @staticmethod
     def get_html_template(template: str = HeronConfigFields.blog_page_template):
         template_name = HeronConfigLoader.get_config(template)
-        templates_dir = Path(template_name).parent
+        templates_dir = Path(__file__).parent / Path(template_name).parent
         env = Environment(loader=FileSystemLoader(str(templates_dir)))
         return env.get_template(Path(template_name).name)
 
