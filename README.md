@@ -1,24 +1,51 @@
 # Heron Blog Engine
 Simple Python Blog Engine for minimalistic personal page/blog
 
-> still in development, also this README is shit lol
+> still in development
 
-This is a simple blog engine created in python.
-It allows to create different categories of articles so you are not bind to just a blog.
+This is a simple blog engine created in python, although defacto it allows to create any webpage, not necessarily a blog, but more on that later.
 
-### Purpose
+All the articles/pages are built using markdown files, then they are injected into customizable jinja2 templates that end up as plain html files with all the neccessery static data.
 
-This engine is easy to use and customizable for creating simple, minimalistic websites using markdown and jinja2 that are outputted into html files ready for live site.
+It uses holiday.css with some small changes for styling. No j*vascript :), however you can add it yourself.
 
-### Usage
+Live example: https://krzysztofczapla.github.io/czapla-blog/
 
-for simpliest usage:
-1) create input folder with articles written in markdown.
-2) run `python heron.py --input-dir <your_input_dir_path> --output-dir <your_output_dir_path>`
+## Usage
+
+### Prerequisites
+
+You need to know markdown language and jinja2 templates.
+
+### Configuration
+
+Use pyproject.toml to change any links, names etc. You can reference its keys directly in the jinja2 templates.
+
+There are two types of pages: main page and detail page. Their default jinja2 templates are inside `templates/index.html` and `templates/detailhtml` respectively. You can change both of them. They share the same header, footbar and navbar which are also customizable.
+
+### Writing posts/articles
+
+You need to create a folder (perhaps in another repo) and put your markdown files there.
+
+If you put them in a subfolder they will belong to a category with that subfolder's name.
+That way you can easily segregate different types of articles on your main page. For example creating a section for blog and a section for diary or something.
+
+For static data inside articles (images, gifs, videos etc) create a static folder inside the input folder or its subfolders and reference them relatively (`./static/blog1_image.png`)
+
+### Getting articles into ready-to-ship html
+
+1) create input folder with articles written in markdown, as described above
+2) run `python engine/heron.py --input-dir <your_input_dir_path> --output-dir <your_output_dir_path>`
 3) Be happy with ready to use html in the specified output folder
 
-You can also use subfolders to create categories of pages.
+### Publishing your blog for free
 
-For example, if, inside your input folder, you create a `blog` subfolder and put markdown files there - then you can access them in jinja2 tempalte using `{% for article in blog %}`
+Put the outputted files into another repo (must be public) inside /docs folder.
 
-Further and better instructions for usage will be given later, too tired for that now lol
+Then you can go to that repo's settings on github and use `Github Pages` to release your blog for free.
+
+## Future development
+
+I am aware that this engine is super simple so in the future I might add new stuff.
+
+I was thinking about improving the main page, changing styling and releasing this as a package so its easier to release new articles quickly.

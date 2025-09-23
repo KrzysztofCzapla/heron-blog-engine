@@ -1,11 +1,3 @@
-"""
-TODO:
-- make the readme readable
-- add some required formatting
-- allow for bigger customization
-- maybe make a package
-"""
-
 import argparse
 
 from jinja_ import JinjaManager
