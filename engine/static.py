@@ -25,7 +25,7 @@ class StaticManager:
                 shutil.copytree(static_dir, dest_dir, dirs_exist_ok=True)
 
         # copy static from templates folder
-        src_templates_static = Path("templates") / "static"
+        src_templates_static = Path(__file__).parent / Path("templates") / "static"
         if src_templates_static.exists():
             shutil.copytree(
                 src_templates_static, dest_static / "static", dirs_exist_ok=True
