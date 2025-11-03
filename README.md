@@ -7,7 +7,7 @@ This is a simple blog engine created in python, although defacto it allows to cr
 
 All the articles/pages are built using markdown files, then they are injected into customizable jinja2 templates that end up as plain html files with all the neccessery static data.
 
-It uses holiday.css with some small changes for styling. No j*vascript :), however you can add it yourself.
+It uses pico.css with some small changes for styling. No j*vascript :), however you can add it yourself.
 
 Live example: https://krzysztofczapla.github.io/czapla-blog/
 
