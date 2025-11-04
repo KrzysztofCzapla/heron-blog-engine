@@ -1,15 +1,15 @@
 # Heron Blog Engine
 Simple Python Blog Engine for minimalistic personal page/blog
 
-> still in development
+> still in development, although no one will ever use it besides me lol
 
 This is a simple blog engine created in python, although defacto it allows to create any webpage, not necessarily a blog, but more on that later.
 
 All the articles/pages are built using markdown files, then they are injected into customizable jinja2 templates that end up as plain html files with all the neccessery static data.
 
-It uses pico.css with some small changes for styling. No j*vascript :), however you can add it yourself.
+It uses pico.css with some small changes for styling. **No j*vascript :)**, however you can add it yourself.
 
-Live example: https://krzysztofczapla.github.io/czapla-blog/
+Live example: https://czapla.xyz/
 
 ## Usage
 

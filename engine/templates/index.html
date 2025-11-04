@@ -3,7 +3,9 @@
 <body class="container">
     {% include 'common/navbar.html' %}
     <div>
-        <p>This is my super minimalistic personal page. It's still work in progress. I plan to mostly blog and share interesting stuff.</p>
+        {% for article in about_me %}
+            <a href="{{ article.url }}">About Me</a>
+        {% endfor %}
     </div>
     <h1>Blog Posts</h1>
     {% for article in blog %}
