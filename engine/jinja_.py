@@ -43,6 +43,9 @@ class JinjaManager:
         for page in self.html_with_context_list:
             category_to_pages[page.category].append(page)
 
+        for key, value in category_to_pages.items():
+            value.sort(key=lambda page: page.metadata.get("date", "1990-01-01"), reverse=True)
+
         file_content = template.render(
             **category_to_pages, **HeronConfigLoader.get_config()
         )
