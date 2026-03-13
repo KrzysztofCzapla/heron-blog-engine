@@ -5,7 +5,7 @@ Simple Python Blog Engine for minimalistic personal page/blog
 
 This is a simple blog engine created in python, although defacto it allows to create any webpage, not necessarily a blog, but more on that later.
 
-All the articles/pages are built using markdown files, then they are injected into customizable jinja2 templates that end up as plain html files with all the neccessery static data.
+All the articles/pages are built using markdown files, then they are injected into customizable jinja2 templates that end up as plain html files with all the neccessary static data.
 
 It uses pico.css with some small changes for styling. **No j*vascript :)**, however you can add it yourself.
 
@@ -32,7 +32,7 @@ That way you can easily segregate different types of articles on your main page.
 
 For static data inside articles (images, gifs, videos etc) create a static folder inside the input folder or its subfolders and reference them relatively (`./static/blog1_image.png`)
 
-### Getting articles into ready-to-ship html
+### Getting articles into html
 
 1) create input folder with articles written in markdown, as described above
 2) run `python engine/heron.py --input-dir <your_input_dir_path> --output-dir <your_output_dir_path>`

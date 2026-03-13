@@ -1,22 +1,70 @@
 {% include 'common/header.html' %}
 
-<body class="container">
-    {% include 'common/navbar.html' %}
-    <div>
-        {% for article in about_me %}
-            <a href="{{ article.url }}">About Me</a>
-        {% endfor %}
+<body>
+    <div class="bg-black min-h-screen flex flex-col text-white">
+
+        {% include 'common/navbar.html' %}
+
+        <main class="  mt-20 pt-2 container mx-auto p-8 px-4 max-w-[1200px]">
+
+            <header class="">
+                <div class="flex">
+                    <h1 class=" text-5xl border-green-500 border-b-4 pb-2">KRZYSZTOF CZAPLA</h1>
+                </div>
+                <p class="py-2">BACKEND DEVELOPER / CS STUDENT</p>
+            </header>
+
+            {% if about is defined %}
+                <section class="my-20">
+                    <a href="{{ about[0].url }}" class="flex w-max">
+                        <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-4xl pl-2">ABOUT →</h2>
+                    </a>
+                    <div class="border-white border p-7 my-5 ml-1 w-max">
+                        {% for article in about %}
+                            <p class="max-w-2xl">{{ article.metadata.description }}</p>
+                            <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 m-1">Read more →</a>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+
+            <section class="my-20">
+                <a href="/blog" class="flex w-max">
+                    <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-4xl pl-2">BLOG →</h2>
+                </a>
+                <div class="border-white border p-7 my-5 ml-1 w-max">
+                    {% for article in blog %}
+                        <div>
+                            <h2 class="font-bold text-2xl mt-4">{{ article.metadata.title }}</h2>
+                            <p>{{ article.metadata.date }}</p>
+                            <p class="max-w-2xl ">{{ article.metadata.description }}</p>
+                            <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 my-2">Read more →</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            {% if projects is defined %}
+                <section class="my-20">
+                    <a href="/projects" class="flex w-max">
+                        <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-4xl pl-2">PROJECTS →</h2>
+                    </a>
+                    <div class="border-white border p-7 my-5 ml-1 w-max">
+                        {% for article in projects %}
+                            <div>
+                                <h2 class="font-bold text-2xl mt-4">{{ article.metadata.title }}</h2>
+                                <p>{{ article.metadata.date }}</p>
+                                <p class="max-w-2xl ">{{ article.metadata.description }}</p>
+                                <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 my-2">Read more →</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+
+        </main>
+
+        {% include 'common/foot.html' %}
+
     </div>
-    <br>
-    <h1>Blog Posts</h1>
-    {% for article in blog %}
-      <article class="bm-10">
-          <p class="no-margin"> {{ article.metadata.date }} </p>
-          <h2 class="no-margin"> <a href="{{ article.url }}"> {{ article.metadata.title }} </a> </h2>
-          <p class="min-margin"> {{ article.metadata.description }} </p>
-      </article>
-    {% endfor %}
-
 </body>
-
-{% include 'common/foot.html' %}

@@ -1,11 +1,22 @@
 {% include 'common/header.html' %}
 
-<body  class="container">
-    {% include 'common/navbar.html' %}
-    <div>
-        {{ content }}
-    </div>
+<body>
+<div class="bg-black min-h-screen flex flex-col text-white">
 
-</body>
+{% include 'common/navbar.html' %}
+
+<main class="  mt-20 pt-2 container mx-auto p-8 px-4 max-w-[1200px]">
+    <header class="">
+        <div class="flex">
+            <h1 class=" text-3xl border-green-500 border-b-4 pb-1">{{ detail.metadata.title }}</h1>
+        </div>
+         <p class="pt-1 pb-5">{{ detail.metadata.date }}</p>
+    </header>
+
+    {{ detail.html }}
+</main>
 
 {% include 'common/foot.html' %}
+
+</div>
+</body>

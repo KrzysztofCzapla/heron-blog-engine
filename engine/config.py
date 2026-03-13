@@ -13,6 +13,7 @@ class HeronConfigFields:
     repo: str = "repo"
     blog_page_template: str = "blog_page_template"
     main_page_template: str = "main_page_template"
+    category_page_template: str = "category_page_template"
 
 
 @dataclass

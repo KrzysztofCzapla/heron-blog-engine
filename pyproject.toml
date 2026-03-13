@@ -4,7 +4,20 @@ homepage = "https://czapla.xyz/"
 repo = "https://github.com/KrzysztofCzapla/heron-blog-engine"
 linkedin="https://www.linkedin.com/in/krzysztof-czapla/"
 github="https://github.com/KrzysztofCzapla"
-twitter="https://x.com/_czapla"
 blog_page_template="templates/detail.html"
 main_page_template="templates/index.html"
+category_page_template="templates/category.html"
 favicon="static/favicon.ico"
+
+[project]
+name = "heron-blog-engine"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "jinja2>=3.1.6",
+    "markdown>=3.10.2",
+    "pygments>=2.19.2",
+    "toml>=0.10.2",
+]

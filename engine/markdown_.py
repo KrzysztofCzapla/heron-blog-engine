@@ -19,13 +19,14 @@ class PageMetadata:
 @dataclass
 class HTMLWithContext:
     html: str
-    file_path: str  # full relative path from input folder, used to inject to output folder; contains .html
+    file_path: str  # full relative path from input folder, used to inject to output folder; has .html
     category: str  # i.e. "blog"; can be used from main page's jinja to have different categories of subpages, i.e.: {{ blog.article1 }}
     metadata: dict
     url: Optional[str] = None
 
     def __post_init__(self):
-        self.url = self.file_path
+        # remove .html from links
+        self.url = self.file_path.replace(".html", "")
 
 
 @dataclass
@@ -50,10 +51,6 @@ class MarkdownManager:
             category=category,
             metadata=metadata,
         )
-
-    def get_new_filename(self, filename: Path) -> str:
-        rel = filename.relative_to(self.input_path)
-        return str(rel.with_suffix(".html"))
 
     def gather_md_files(self):
         path = Path(self.input_path)

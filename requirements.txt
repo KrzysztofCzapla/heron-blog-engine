@@ -1,4 +1,0 @@
-toml==0.10.2
-markdown
-jinja2
-pygments
