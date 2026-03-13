@@ -35,11 +35,11 @@ class MarkdownManager:
 
     def get_html_with_context_list(self) -> List[HTMLWithContext]:
         return [
-            self.get_single_html_with_context(filename)
-            for filename in self.gather_md_files()
+            self._get_single_html_with_context(filename)
+            for filename in self._gather_md_files()
         ]
 
-    def get_single_html_with_context(self, filename: Path) -> HTMLWithContext:
+    def _get_single_html_with_context(self, filename: Path) -> HTMLWithContext:
         html = MD.reset().convert(open(filename).read())
         metadata = {k: "\n".join(v) for k, v in MD.Meta.items()}
         file_path = filename.relative_to(self.input_path).with_suffix(".html")
@@ -52,6 +52,6 @@ class MarkdownManager:
             metadata=metadata,
         )
 
-    def gather_md_files(self):
+    def _gather_md_files(self):
         path = Path(self.input_path)
         return list(path.rglob("*.md"))
