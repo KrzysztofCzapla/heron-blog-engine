@@ -1,35 +1,43 @@
 <header class="fixed top-0 left-0 right-0 z-40 bg-black border-white border-b">
-  <div class="container flex items-center justify-between h-7 mx-auto p-8 px-4 max-w-[1200px]">
+  <div class="container flex items-center justify-between mx-auto px-4 py-4 max-w-[1200px]">
+
     <a href="/" class="border-b-2 border-green-500 hover:bg-green-500 font-bold">KC</a>
-    <nav>
-      <ul class="flex h-full border-2 border-white font-bold">
-        <li class="flex h-full border-r border-white">
-          <a href="/" class="flex align-middle hover:bg-green-500">
-            <span class="h-full text-xs py-2 px-4">HOME</span>
-          </a>
+
+    <input id="menu-toggle" type="checkbox" class="hidden peer">
+
+    <label for="menu-toggle" class="block md:hidden cursor-pointer">
+      <div class="flex flex-col justify-center w-5 h-5">
+        <span class="w-5 h-0.5 bg-white block"></span>
+        <span class="w-5 h-0.5 bg-white block my-1"></span>
+        <span class="w-5 h-0.5 bg-white block"></span>
+      </div>
+    </label>
+
+    <nav class="absolute top-full left-0 w-full bg-black border-t border-white hidden peer-checked:block md:static md:block md:w-auto md:border-0">
+      <ul class="flex flex-col md:flex-row border-2 border-white md:border-2 font-bold">
+
+        <li class="border-b md:border-b-0 md:border-r border-white">
+          <a href="/" class="block hover:bg-green-500 text-xs py-2 px-4">HOME</a>
         </li>
-        <li class="h-full border-r border-white">
-          <a href="/about/about" class="flex align-middle hover:bg-green-500">
-            <span class="text-xs py-2 px-4">ABOUT</span>
-          </a>
+
+        <li class="border-b md:border-b-0 md:border-r border-white">
+          <a href="/about/about" class="block hover:bg-green-500 text-xs py-2 px-4">ABOUT</a>
         </li>
-        <li class="h-full border-r border-white">
-          <a href="/blog" class="flex align-middle hover:bg-green-500">
-            <span class="text-xs py-2 px-4">BLOG</span>
-          </a>
+
+        <li class="border-b md:border-b-0 md:border-r border-white">
+          <a href="/blog" class="block hover:bg-green-500 text-xs py-2 px-4">BLOG</a>
         </li>
-        <li class=" border-r border-white">
-          <a href="/projects" class="flex  align-middle hover:bg-green-500">
-            <span class="text-xs py-2 px-4 font-[1100]">PROJECTS</span>
-          </a>
+
+        <li class="border-b md:border-b-0 md:border-r border-white">
+          <a href="/projects" class="block hover:bg-green-500 text-xs py-2 px-4 font-[1100]">PROJECTS</a>
         </li>
-        <li class="h-full border-white">
-          <a href="/contact/contact" class="flex align-middle hover:bg-green-500">
-            <span class="text-xs py-2 px-4">CONTACT</span>
-          </a>
+
+        <li>
+          <a href="/contact/contact" class="block hover:bg-green-500 text-xs py-2 px-4">CONTACT</a>
         </li>
+
       </ul>
     </nav>
-    <button class="block md:hidden" aria-label="Toggle mobile menu"><div class="flex flex-col justify-center w-4 h-4 space-y-1"><span class="w-4 h-0.5 bg-black block transition-transform "></span><span class="w-4 h-0.5 bg-black block transition-opacity "></span><span class="w-4 h-0.5 bg-black block transition-transform "></span></div></button>
+
   </div>
 </header>

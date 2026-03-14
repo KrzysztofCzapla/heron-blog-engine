@@ -5,39 +5,39 @@
 
         {% include 'common/navbar.html' %}
 
-        <main class="  mt-20 pt-2 container mx-auto p-8 px-4 max-w-[1200px]">
+        <main class="mt-20 pt-2 container mx-auto px-4 py-4 md:p-8 max-w-[1200px]">
 
-            <header class="">
+            <header>
                 <div class="flex">
-                    <h1 class=" text-5xl border-green-500 border-b-4 pb-2 uppercase">{{ main_title }}</h1>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl border-green-500 border-b-4 pb-2 uppercase">{{ main_title }}</h1>
                 </div>
-                <p class="py-2 uppercase">{{ main_description }}</p>
+                <p class="py-2 uppercase text-sm sm:text-base">{{ main_description }}</p>
             </header>
 
             {% if about is defined %}
-                <section class="my-20">
+                <section class="my-12 md:my-20">
                     <a href="{{ about[0].url }}" class="flex w-max">
-                        <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-4xl pl-2">ABOUT →</h2>
+                        <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-2xl sm:text-3xl md:text-4xl pl-2">ABOUT →</h2>
                     </a>
-                    <div class="border-white border p-7 my-5 ml-1 w-max">
+                    <div class="border-white border p-5 md:p-7 my-5 ml-1 w-full md:w-max max-w-full md:max-w-none">
                         {% for article in about %}
-                            <p class="max-w-2xl">{{ article.metadata.description }}</p>
-                            <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 m-1">Read more →</a>
+                            <p class="max-w-2xl break-words">{{ article.metadata.description }}</p>
+                            <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 my-1">Read more →</a>
                         {% endfor %}
                     </div>
                 </section>
             {% endif %}
 
-            <section class="my-20">
+            <section class="my-12 md:my-20">
                 <a href="/blog" class="flex w-max">
-                    <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-4xl pl-2">BLOG →</h2>
+                    <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-2xl sm:text-3xl md:text-4xl pl-2">BLOG →</h2>
                 </a>
-                <div class="border-white border p-7 my-5 ml-1 w-max">
+                <div class="border-white border p-5 md:p-7 my-5 ml-1 w-full md:w-max max-w-full md:max-w-none">
                     {% for article in blog %}
                         <div>
-                            <h2 class="font-bold text-2xl mt-4">{{ article.metadata.title }}</h2>
+                            <h2 class="font-bold text-xl sm:text-2xl mt-4">{{ article.metadata.title }}</h2>
                             <p>{{ article.metadata.date }}</p>
-                            <p class="max-w-2xl ">{{ article.metadata.description }}</p>
+                            <p class="max-w-2xl break-words">{{ article.metadata.description }}</p>
                             <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 my-2">Read more →</a>
                         </div>
                     {% endfor %}
@@ -45,16 +45,16 @@
             </section>
 
             {% if projects is defined %}
-                <section class="my-20">
+                <section class="my-12 md:my-20">
                     <a href="/projects" class="flex w-max">
-                        <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-4xl pl-2">PROJECTS →</h2>
+                        <h2 class="border-l-4 hover:bg-green-500 border-green-500 text-2xl sm:text-3xl md:text-4xl pl-2">PROJECTS →</h2>
                     </a>
-                    <div class="border-white border p-7 my-5 ml-1 w-max">
+                    <div class="border-white border p-5 md:p-7 my-5 ml-1 w-full md:w-max max-w-full md:max-w-none">
                         {% for article in projects %}
                             <div>
-                                <h2 class="font-bold text-2xl mt-4">{{ article.metadata.title }}</h2>
+                                <h2 class="font-bold text-xl sm:text-2xl mt-4">{{ article.metadata.title }}</h2>
                                 <p>{{ article.metadata.date }}</p>
-                                <p class="max-w-2xl ">{{ article.metadata.description }}</p>
+                                <p class="max-w-2xl break-words">{{ article.metadata.description }}</p>
                                 <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 my-2">Read more →</a>
                             </div>
                         {% endfor %}

@@ -5,21 +5,23 @@
 
         {% include 'common/navbar.html' %}
 
-        <main class="  mt-20 pt-2 container mx-auto p-8 px-4 max-w-[1200px]">
+        <main class="mt-20 pt-2 container mx-auto px-4 py-4 md:p-8 max-w-[1200px]">
 
-            <header class="">
+            <header>
                 <div class="flex">
-                    <h1 class=" text-5xl border-green-500 border-b-4 pb-2 uppercase">{{ category }}</h1>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl border-green-500 border-b-4 pb-2 uppercase break-words">{{ category }}</h1>
                 </div>
             </header>
 
-            <section class="my-20 grid grid-cols-4 gap-4">
+            <section class="my-12 md:my-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {% for article in pages %}
-                    <div class="border-white border p-7">
+                    <div class="border-white border p-5 md:p-7">
                         <div>
-                            <p>{{ article.metadata.date }}</p>
-                            <h2 class="font-bold text-2xl mt-4"><a href="{{ article.url }}">{{ article.metadata.title }}</a>></h2>
-                            <p class="max-w-2xl ">{{ article.metadata.description }}</p>
+                            <p class="text-sm sm:text-base">{{ article.metadata.date }}</p>
+                            <h2 class="font-bold text-xl sm:text-2xl mt-4 break-words">
+                                <a href="{{ article.url }}">{{ article.metadata.title }}</a>
+                            </h2>
+                            <p class="max-w-2xl break-words">{{ article.metadata.description }}</p>
                             <a href="{{ article.url }}" class="inline-block border-b border-green-500 hover:bg-green-500 hover:border-green-500 my-2">Read more →</a>
                         </div>
                     </div>

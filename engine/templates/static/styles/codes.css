@@ -85,13 +85,19 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .codehilite .il { color: #F0F } /* Literal.Number.Integer.Long */
 
 .codehilite {
-    display: inline-block;
+    display: block;
     background: black;
     border-left: 4px solid rgb(34 197 94);
     padding: 12px;
+    max-width: 100%;
 }
 
 .codehilite pre {
-    display: inline-block;
-    width: auto;
+    overflow-x: auto;
+    white-space: pre;
+    max-width: 100%;
+}
+
+.codehilite code {
+    white-space: pre;
 }
