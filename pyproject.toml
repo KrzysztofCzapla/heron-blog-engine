@@ -8,7 +8,7 @@ github="https://github.com/KrzysztofCzapla"
 blog_page_template="templates/detail.html"
 main_page_template="templates/index.html"
 category_page_template="templates/category.html"
-favicon="static/favicon.ico"
+favicon="static/favicon4.png"
 
 [project]
 name = "heron-blog-engine"
