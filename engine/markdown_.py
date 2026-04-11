@@ -5,7 +5,7 @@ from typing import List, Optional
 from markdown import Markdown
 
 MD: Markdown = Markdown(
-    extensions=["tables", "fenced_code", "codehilite", "meta", "footnotes"]
+    extensions=["extra", "tables", "fenced_code", "codehilite", "meta", "footnotes"]
 )
 
 
